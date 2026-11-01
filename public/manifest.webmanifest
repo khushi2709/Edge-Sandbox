@@ -1,0 +1,9 @@
+{
+  "name": "EdgeSandbox",
+  "short_name": "EdgeSandbox",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#101827",
+  "theme_color": "#101827",
+  "description": "An offline-first coding workspace"
+}
