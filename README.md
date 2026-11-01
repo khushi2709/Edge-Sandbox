@@ -1,36 +1,137 @@
-# EdgeSandbox starter (MVP)
+# EdgeSandbox 
+### Code Anywhere. Even Offline.
 
-A Python-first browser coding workspace demonstrating the first EdgeSandbox milestone:
-- React + Monaco code editor
-- Pyodide Python execution in a Web Worker
-- IndexedDB local project storage
-- Manual version snapshots
-- Basic PWA manifest and service-worker app-shell caching
+**EdgeSandbox** is a browser-based coding environment designed to make programming more accessible to students, especially those working with limited connectivity or computing resources.
 
-## Run locally
+It provides an integrated workspace to write, execute, save and manage Python projects directly in the browser, with local project persistence and version snapshots.
 
-1. Install Node.js (LTS).
-2. Extract this folder and open a terminal inside it.
-3. Run:
+---
 
-   ```bash
-   npm install
-   npm run dev
-   ```
+## Problem Statement
 
-4. Open the local URL printed by Vite (usually http://localhost:5173).
+Students in areas with unreliable internet connectivity often face difficulties accessing cloud-based coding platforms. Continuous internet dependency can interrupt coding sessions, limit access to development tools and make project work challenging.
 
-## Important MVP limitations
+##  Our Solution
 
-- The first visit and first Python runtime load require internet. The service worker currently caches the app shell; it does not yet precache the Pyodide runtime and all Monaco assets for a guaranteed first-class offline experience.
-- Python runs in a browser Web Worker using Pyodide. This is not arbitrary native-code execution and is not a complete security sandbox. Add execution time/memory limits and a stricter worker lifecycle before production use.
-- Projects and snapshots stay in this browser profile. Clearing browser site data can delete them. Add export/backup before relying on this for important work.
-- No login, FastAPI backend, PostgreSQL database, cross-device sync, or automatic conflict resolution is included yet.
+EdgeSandbox follows a **local-first development approach**, allowing users to write and execute Python code in the browser and save their projects locally.
 
-## Suggested next milestones
+The goal is to reduce dependency on continuous internet connectivity while providing an accessible and lightweight coding workspace.
 
-1. Cache Pyodide and required app assets for offline reloads after the first online visit.
-2. Add project export/import and storage quota handling.
-3. Add snapshot diff and restore confirmation.
-4. Build FastAPI endpoints and PostgreSQL persistence.
-5. Add a queued sync protocol with revision numbers and conflict preservation.
+## Key Features
+
+- **Browser-Based Code Editor:** Write Python code using the Monaco Editor.
+- **Python Code Execution:** Execute Python directly in the browser using Pyodide and WebAssembly.
+- **Local Project Storage:** Save and reopen projects using IndexedDB.
+- **Project Management:** Create and switch between multiple coding projects.
+- **Version Snapshots:** Save previous versions of code and restore them when needed.
+- **Progressive Web App Foundation:** Service worker integration for application caching.
+
+## Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| React.js | Frontend development |
+| JavaScript | Application logic |
+| Monaco Editor | Code editing interface |
+| Pyodide | Browser-based Python execution |
+| WebAssembly | Runtime support |
+| Web Workers | Background code execution |
+| IndexedDB | Local project and snapshot storage |
+| Vite | Development and build tooling |
+| PWA / Service Worker | Offline application foundation |
+
+## How It Works
+
+1. Open EdgeSandbox in the browser.
+2. Create or select a coding project.
+3. Write Python code in the editor.
+4. Execute code using the Pyodide runtime.
+5. View output in the terminal panel.
+6. Save projects locally in IndexedDB.
+7. Create version snapshots to preserve earlier code.
+
+## Project Structure
+
+```text
+Edge-Sandbox/
+│
+├── public/
+│   ├── manifest.webmanifest
+│   └── sw.js
+│
+├── src/
+│   ├── App.jsx
+│   ├── main.jsx
+│   ├── style.css
+│   ├── db.js
+│   └── python.worker.js
+│
+├── index.html
+├── package.json
+└── vite.config.js
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- npm
+- A modern web browser
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/khushi2709/Edge-Sandbox.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd Edge-Sandbox
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open the local URL displayed in your terminal, usually:
+
+```text
+http://localhost:5173
+```
+
+**Note:** The initial Pyodide runtime download requires an internet connection.
+
+## Future Scope
+
+- Complete offline application and runtime caching.
+- Automatic synchronization when internet connectivity is restored.
+- FastAPI backend integration.
+- PostgreSQL cloud storage.
+- Conflict detection and resolution during synchronization.
+- Enhanced project and file management.
+- Integrated offline learning resources.
+
+## Team
+
+**Team TRISHUL**
+
+- Khushi Sharma
+- Kunal Vats
+
+J.C. Bose University of Science and Technology, YMCA, Faridabad.
+
+---
+
+*EdgeSandbox – Making coding more accessible, one project at a time.*
